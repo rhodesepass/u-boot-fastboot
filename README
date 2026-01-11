@@ -15,7 +15,7 @@ fastboot falsh r [path-to-your-ubi.img]
 
 请不要随意distclean!不保证可以重新正常编译
 使用的编译配置文件为suniv_f1c200s_fastburn_defconfig
-
+fastboot的spi后端已经使用mtd进行重写 请不要随意覆盖
 ---
 
 # SPDX-License-Identifier: GPL-2.0+
