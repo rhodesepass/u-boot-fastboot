@@ -1218,3 +1218,4 @@ DTC_FLAGS += -a 0x8
 
 DTC_FLAGS_imx8mp-dhcom-som-overlay-rev100 += -Wno-avoid_default_addr_size -Wno-reg_format
 DTC_FLAGS_imx8mp-dhcom-pdk3-overlay-rev100 += -Wno-avoid_default_addr_size -Wno-reg_format
+dtb-$(CONFIG_MACH_SUNIV) += suniv-f1c200s-custom.dtb
