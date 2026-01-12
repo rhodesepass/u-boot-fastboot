@@ -1,4 +1,26 @@
- # SPDX-License-Identifier: GPL-2.0+
+为电子通行证定制的uboot 包含fastboot快速刷写功能
+USBID设置为谷歌的设备便于被fastboot 客户端识别
+已经编译好 仓库中u-boot-sunxi-with-spl.bin即为最终可以用于启动的镜像
+启动指令:
+sunxi-fel uboot u-boot-sunxi-with-spl.bin
+启动后通行证会自动切换到fastboot模式 设备名变更为Google USB Download Gadget
+安装驱动(请自行上网搜索教程 安装Bootloader Interface驱动)后使用Android Platform Tools中的fastboot进行刷写
+分区表默认只定义了full_chip，需要发送分区表便于刷写
+发送指令为
+fastboot oem run:setenv mtdparts "spi-nand0:1M(u),128K(d),5M(k),-(r)"
+发送后使用
+fastboot flash k [path-to-your-zImage]
+fastboot falsh r [path-to-your-ubi.img]
+进行刷写，随后使用fastboot reboot重启通行证即可
+
+请不要随意distclean!不保证可以重新正常编译
+使用的编译配置文件为suniv_f1c200s_fastburn_defconfig
+fastboot的spi后端已经使用mtd进行重写 请不要随意覆盖\
+
+
+---
+
+# SPDX-License-Identifier: GPL-2.0+
 #
 # (C) Copyright 2000 - 2013
 # Wolfgang Denk, DENX Software Engineering, wd@denx.de.
